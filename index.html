@@ -403,7 +403,7 @@
             <tr><td>Mayúsculas/minúsculas, buscar y reemplazar, generador de títulos</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
             <tr><td>Biblioteca de guiones, meta del guion, respaldo/restauración</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
             <tr><td>Adaptar texto para TTS y diccionario de pronunciación</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
-            <tr><td>Corrector gramatical, exportar Word / PDF / SRT</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
+            <tr><td>Corrector gramatical, exportar Word / PDF / SRT / Markdown</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
             <tr><td>Voz clonada con Applio (texto a voz y audio a voz)</td><td class="yes">Sí</td><td class="no">—</td></tr>
             <tr><td>Historial de audio, unir audios, espectro animado</td><td class="yes">Sí</td><td class="no">—</td></tr>
             <tr><td>Necesita Applio corriendo en tu PC</td><td class="yes">Sí</td><td class="no">No</td></tr>
@@ -426,6 +426,14 @@
 
       <h3>Nivel de lectura</h3>
       <p>Una insignia con la facilidad de lectura del texto (basada en Flesch) y el grado escolar aproximado que necesitaría un lector para entenderlo sin esfuerzo.</p>
+
+      <h3>Botones flotantes</h3>
+      <p>En guiones largos, el editor se sale de la vista al desplazarte. Para eso hay dos ayudas en la esquina inferior derecha:</p>
+      <ul>
+        <li><strong>Contador de caracteres flotante:</strong> aparece cuando la tarjeta de Estadísticas se sale de la vista y muestra los caracteres; al pulsarlo vuelves a ella.</li>
+        <li><strong>Flechas ↑ y ↓:</strong> llevan al inicio o al final del texto. Cada flecha aparece solo cuando sirve: mueven primero el texto dentro del cuadro y, si hace falta, la página. Si el texto ya está a la vista, el editor parpadea un instante para que veas dónde está.</li>
+      </ul>
+      <p>Los dos se pueden apagar desde la tarjeta <span class="ui-label">Estadísticas</span>, y la preferencia se recuerda.</p>
 
       <h3>Densidad de palabras clave</h3>
       <p>La tarjeta <span class="ui-label">Densidad de palabras clave</span> lista las palabras (o combinaciones de 2-3 palabras, con las pestañas de arriba) que más se repiten en tu texto, con cuántas veces aparecen y qué porcentaje representan. La casilla <span class="ui-label">Excluir palabras comunes</span> saca artículos y conectores (el, la, de, and, the…) para que no dominen la lista.</p>
@@ -490,11 +498,11 @@
 
     <section class="doc-section" id="exportar">
       <div class="section-head"><h2><span class="num">08</span>Exportar</h2><span class="badge badge-both">Ambas versiones</span></div>
-      <p class="section-intro">Tres formatos de salida para el texto del editor, cada uno en la barra superior.</p>
+      <p class="section-intro">Cuatro formatos de salida para el texto del editor, cada uno en la barra del editor.</p>
       <div class="feature-grid">
         <div class="feature">
           <div class="f-title">📄 Word</div>
-          <p>Descarga el texto y el resumen de estadísticas como documento .doc.</p>
+          <p>Descarga un documento <code>.docx</code> con un título, el resumen de estadísticas y el texto.</p>
         </div>
         <div class="feature">
           <div class="f-title">🧾 PDF</div>
@@ -504,7 +512,12 @@
           <div class="f-title">🎬 SRT</div>
           <p>Convierte el texto en subtítulos con marcas de tiempo, un cue por párrafo, estimadas a partir del tiempo de habla.</p>
         </div>
+        <div class="feature">
+          <div class="f-title">📝 Markdown</div>
+          <p>Un archivo <code>.md</code> con la misma estructura, listo para Notion, Obsidian o GitHub. Los <code>#</code>, <code>-</code> y <code>**</code> que escribiste se respetan tal cual.</p>
+        </div>
       </div>
+      <p>El título del documento sale del <span class="ui-label">Generador de títulos</span>; si está vacío, del nombre del guion guardado.</p>
     </section>
 
     <section class="doc-section" id="respaldo">
@@ -546,7 +559,7 @@
       <p class="section-intro">Genera audio con texto a voz (TTS) o convierte un audio existente con un modelo de voz (RVC), usando tu propia instancia de Applio corriendo en la misma PC.</p>
 
       <h3>Conectar</h3>
-      <p>Con Applio abierto en tu computador, pega su URL local (normalmente algo como <code>http://127.0.0.1:7860</code>) y pulsa <span class="ui-label">Conectar</span>. Guionter lee la configuración de tu Applio directamente, así que siempre ves tus modelos de voz e índices reales.</p>
+      <p>Con Applio abierto en tu computador, pega su URL local (por defecto <code>http://127.0.0.1:6969</code>, el puerto de Applio) y pulsa <span class="ui-label">Conectar</span>. Guionter lee la configuración de tu Applio directamente, así que siempre ves tus modelos de voz e índices reales.</p>
 
       <h3>Modo Texto a voz</h3>
       <p>Escribe o usa el texto ya presente en el editor principal, elige la voz de síntesis, el modelo de voz (RVC) que la convertirá, y genera. El audio resultante aparece en el reproductor, sin reproducirse automáticamente.</p>
@@ -576,8 +589,8 @@
     <section class="doc-section" id="consejos">
       <div class="section-head"><h2><span class="num">12</span>Notas y consejos</h2><span class="badge badge-both">Ambas versiones</span></div>
       <ul>
-        <li><strong>Idioma:</strong> el selector de la barra superior cambia toda la interfaz entre español e inglés — no traduce tu texto, solo la app.</li>
-        <li><strong>Tema:</strong> el botón 🌓 alterna entre claro, oscuro y automático (según tu sistema).</li>
+        <li><strong>Idioma:</strong> el selector de la barra superior cambia toda la interfaz entre español e inglés — no traduce tu texto, solo la app. La elección se recuerda la próxima vez que abras Guionter.</li>
+        <li><strong>Tema:</strong> el botón 🌓 alterna entre oscuro, claro y automático (según tu sistema), y también se recuerda.</li>
         <li><strong>Guardado automático:</strong> el texto del editor se guarda solo mientras escribes, así que si cierras la pestaña por accidente lo encuentras al volver a abrir.</li>
         <li><strong>Todo vive en tu navegador:</strong> diccionario, guiones, meta, y perfiles (en la versión completa) se guardan localmente — usa <span class="ui-label">Backup</span> si vas a cambiar de navegador o de computador.</li>
         <li><strong>Guionter Lite es de solo texto a propósito:</strong> como corre 100% en el navegador sin nada instalado, no puede conectarse a un Applio que corre en tu propia PC.</li>
