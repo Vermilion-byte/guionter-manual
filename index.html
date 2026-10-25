@@ -406,7 +406,7 @@
             <tr><td>Corrector gramatical, exportar Word / PDF / SRT / Markdown</td><td class="yes">Sí</td><td class="yes">Sí</td></tr>
             <tr><td>Voz clonada con Applio (texto a voz y audio a voz)</td><td class="yes">Sí</td><td class="no">—</td></tr>
             <tr><td>Historial de audio, unir audios, espectro animado</td><td class="yes">Sí</td><td class="no">—</td></tr>
-            <tr><td>Necesita Applio corriendo en tu PC</td><td class="yes">Sí</td><td class="no">No</td></tr>
+            <tr><td>Necesita Applio (app de escritorio) y una clave API</td><td class="yes">Sí</td><td class="no">No</td></tr>
           </tbody>
         </table>
       </div>
@@ -428,10 +428,10 @@
       <p>Una insignia con la facilidad de lectura del texto (basada en Flesch) y el grado escolar aproximado que necesitaría un lector para entenderlo sin esfuerzo.</p>
 
       <h3>Botones flotantes</h3>
-      <p>En guiones largos, el editor se sale de la vista al desplazarte. Para eso hay dos ayudas en la esquina inferior derecha:</p>
+      <p>En guiones largos, el editor se sale de la vista al desplazarte. Para eso hay dos ayudas:</p>
       <ul>
         <li><strong>Contador de caracteres flotante:</strong> aparece cuando la tarjeta de Estadísticas se sale de la vista y muestra los caracteres; al pulsarlo vuelves a ella.</li>
-        <li><strong>Flechas ↑ y ↓:</strong> llevan al inicio o al final del texto. Cada flecha aparece solo cuando sirve: mueven primero el texto dentro del cuadro y, si hace falta, la página. Si el texto ya está a la vista, el editor parpadea un instante para que veas dónde está.</li>
+        <li><strong>Flechas ↑ y ↓</strong>, a los dos lados del cuadro del editor, junto a su esquina inferior: llevan al inicio o al final del texto. Cada flecha aparece solo cuando sirve: mueven primero el texto dentro del cuadro y, si hace falta, la página. Si el texto ya está a la vista, el editor parpadea un instante para que veas dónde está.</li>
       </ul>
       <p>Los dos se pueden apagar desde la tarjeta <span class="ui-label">Estadísticas</span>, y la preferencia se recuerda.</p>
 
@@ -556,10 +556,16 @@
 
     <section class="doc-section" id="applio">
       <div class="section-head"><h2><span class="num">11</span>Voz clonada con Applio</h2><span class="badge badge-full">Solo versión completa</span></div>
-      <p class="section-intro">Genera audio con texto a voz (TTS) o convierte un audio existente con un modelo de voz (RVC), usando tu propia instancia de Applio corriendo en la misma PC.</p>
+      <p class="section-intro">Genera audio con texto a voz (TTS) o convierte un audio existente con un modelo de voz (RVC), usando Applio (la app de escritorio, versión 1.0 o posterior) en la misma PC.</p>
+
+      <h3>Antes de empezar</h3>
+      <ol class="steps">
+        <li>Abre Guionter con <code>iniciar-guionter.bat</code>. Ese servidor hace de puente con Applio, que no acepta conexiones directas desde el navegador. Si abres el archivo a pelo, Guionter te avisará.</li>
+        <li>Abre Applio y ve a <span class="ui-label">API &amp; Workflows</span> → <span class="ui-label">Create API key</span>. Copia la clave: Applio solo la muestra una vez.</li>
+      </ol>
 
       <h3>Conectar</h3>
-      <p>Con Applio abierto en tu computador, pega su URL local (por defecto <code>http://127.0.0.1:6969</code>, el puerto de Applio) y pulsa <span class="ui-label">Conectar</span>. Guionter lee la configuración de tu Applio directamente, así que siempre ves tus modelos de voz e índices reales.</p>
+      <p>En Guionter escribe la dirección de Applio (por defecto <code>http://127.0.0.1:3000</code>, la que aparece en API &amp; Workflows), pega la clave y pulsa <span class="ui-label">Conectar</span>. La dirección y la clave se recuerdan en el navegador. Guionter lee de tu Applio los modelos de voz, las voces de TTS y los límites de cada ajuste, así que siempre ves lo que tienes instalado. Si un modelo tiene su archivo de índice, se elige solo.</p>
 
       <h3>Modo Texto a voz</h3>
       <p>Escribe o usa el texto ya presente en el editor principal, elige la voz de síntesis, el modelo de voz (RVC) que la convertirá, y genera. El audio resultante aparece en el reproductor, sin reproducirse automáticamente.</p>
@@ -571,10 +577,10 @@
       <p>Guarda una combinación completa de ajustes (modelo, índice, método F0, velocidad, etc.) con un nombre, para no tener que volver a configurarlos cada vez que cambias de voz.</p>
 
       <h3>Ajustes avanzados de conversión (RVC)</h3>
-      <p>Panel plegable con los parámetros finos de la conversión: método F0, fuerza del índice, protección de consonantes, autotune, limpieza de audio, entre otros — los mismos que expone Applio, resueltos directamente desde tu instancia.</p>
+      <p>Panel plegable con los parámetros finos de la conversión: método F0, fuerza del índice, protección de consonantes, autotune, tono propuesto y limpieza de audio (sin limpieza, ligera o de voz) — los mismos que expone Applio, con los límites que declara tu instancia.</p>
 
       <h3>Historial de generaciones</h3>
-      <p>Cada audio generado queda registrado con fecha y un fragmento del texto. Desde ahí puedes reproducirlo, descargarlo o eliminarlo.</p>
+      <p>Cada audio generado queda registrado con fecha y un fragmento del texto. Desde ahí puedes reproducirlo, descargarlo o eliminarlo. Mientras Applio trabaja verás el tiempo que lleva y la etapa en la que va; <span class="ui-label">Cancelar</span> le pide a Applio que pare.</p>
 
       <h3>Unir audios del historial</h3>
       <p>Marca dos o más entradas del historial con su casilla y pulsa <span class="ui-label">Unir seleccionados</span>: los concatena en orden cronológico y descarga un solo archivo, quedando también como una nueva entrada del historial.</p>
@@ -594,6 +600,7 @@
         <li><strong>Guardado automático:</strong> el texto del editor se guarda solo mientras escribes, así que si cierras la pestaña por accidente lo encuentras al volver a abrir.</li>
         <li><strong>Todo vive en tu navegador:</strong> diccionario, guiones, meta, y perfiles (en la versión completa) se guardan localmente — usa <span class="ui-label">Backup</span> si vas a cambiar de navegador o de computador.</li>
         <li><strong>Guionter Lite es de solo texto a propósito:</strong> como corre 100% en el navegador sin nada instalado, no puede conectarse a un Applio que corre en tu propia PC.</li>
+        <li><strong>Si Applio dice que la clave no vale:</strong> crea una nueva en API &amp; Workflows y pégala completa. Revocar o rotar una clave en Applio deja de funcionar en Guionter hasta que pegues la nueva.</li>
       </ul>
     </section>
 
